@@ -6,4 +6,4 @@ User Input: Grid-size and Words.
 
 How Request Look like : http://localhost:8080/gridWord?gridSize=5&words=HI,ZOO
 
-How Response Look like : https://in.pinterest.com/pin/1070379036406440296/
+
