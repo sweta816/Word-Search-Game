@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
-@RestController("/gridWord")
+@RestController("/")
 public class WordSearchController {
 
 //    private int gridSize;

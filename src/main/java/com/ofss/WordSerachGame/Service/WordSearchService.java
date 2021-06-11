@@ -83,7 +83,7 @@ public class WordSearchService {
                 }
             }
         }
-        randomFillGrid(content);
+        //randomFillGrid(content);
         return content;
     }
     private Direction getDirectionForFit( char[][] content,String word, Coordinate coordinate){
@@ -104,40 +104,46 @@ public class WordSearchService {
                 case HORIZONTAL:
                     if (coordinate.y + word.length() > gridSize) return false;
                     for (int i = 0; i < word.length(); i++) {
-                        if (content[coordinate.x][coordinate.y + i] != '-') return false;
+                        if (content[coordinate.x][coordinate.y + i] != '-' &&
+                                content[coordinate.x][coordinate.y + i] != word.charAt(i)) return false;
                     }
                     break;
                 case VERTICAL:
                     if (coordinate.x + word.length() > gridSize) return false;
                     for (int i = 0; i < word.length(); i++) {
-                        if (content[coordinate.x + i][coordinate.y] != '-') return false;
+                        if (content[coordinate.x + i][coordinate.y] != '-'&&
+                                content[coordinate.x + i][coordinate.y] != word.charAt(i)) return false;
                     }
                     break;
                 case DIAGONAL:
                     if (coordinate.y + word.length() > gridSize || coordinate.x + word.length() > gridSize)
                         return false;
                     for (int i = 0; i < word.length(); i++) {
-                        if (content[coordinate.x + i][coordinate.y + i] != '-') return false;
+                        if (content[coordinate.x + i][coordinate.y + i] != '-' &&
+                                content[coordinate.x + i][coordinate.y + i] != word.charAt(i)) return false;
                     }
                     break;
                 case HORIZONTAL_BACK:
                     if (coordinate.y - word.length() < 0 )
                         return false;
                     for (int i = 0; i < word.length(); i++) {
-                        if (content[coordinate.x ][coordinate.y - i] != '-') return false;
+                        if (content[coordinate.x ][coordinate.y - i] != '-' &&
+                                content[coordinate.x ][coordinate.y - i] != word.charAt(i)) return false;
                     }
                     break;
                 case VERTICAL_BACK:
                     if(coordinate.x-word.length()<0) return false;
                     for(int i=0;i<word.length();i++){
-                        if(content[coordinate.x-i][coordinate.y] !='-') return false;
+                        if(content[coordinate.x-i][coordinate.y] !='-' &&
+                                content[coordinate.x-i][coordinate.y] !=word.charAt(i)) return false;
                     }
                     break;
                 case DIAGONAL_BACK:
                     if (coordinate.y - word.length() < 0 || coordinate.x - word.length() < 0)
                         return false;
                     for (int i = 0; i < word.length(); i++) {
-                        if (content[coordinate.x - i][coordinate.y - i] != '-') return false;
+                        if (content[coordinate.x - i][coordinate.y - i] != '-' &&
+                                content[coordinate.x - i][coordinate.y - i] != word.charAt(i)) return false;
                     }
                     break;
 
@@ -167,8 +173,5 @@ public class WordSearchService {
             }
         }
     }
-
-
-
 }
 
