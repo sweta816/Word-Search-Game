@@ -41,6 +41,9 @@ public class WordSearchService {
             }
         }
         for (String word : words) {
+            /*
+            for every word it will pick up some shuffled coordinate
+             */
             Collections.shuffle(coordinates);
             for(Coordinate coordinate:coordinates) {
                 int x =coordinate.x;
@@ -50,31 +53,31 @@ public class WordSearchService {
                 if(selectedDirection!=null){
                     switch(selectedDirection){
                         case HORIZONTAL:
-                            for(char c:word.toCharArray()) {
+                            for(char c:word.toUpperCase().toCharArray()) {
                                 content[x][y++] = c;
                             }break;
                         case VERTICAL:
-                            for(char c:word.toCharArray()) {
+                            for(char c:word.toUpperCase().toCharArray()) {
                                 content[x++][y] = c;
                             }
                             break;
                         case DIAGONAL:
-                            for(char c:word.toCharArray()) {
+                            for(char c:word.toUpperCase().toCharArray()) {
                                 content[x++][y++] = c;
                             }
                             break;
                         case HORIZONTAL_BACK:
-                            for(char c:word.toCharArray()) {
+                            for(char c:word.toUpperCase().toCharArray()) {
                                 content[x][y--] = c;
                             }
                             break;
                         case VERTICAL_BACK:
-                            for(char c: word.toCharArray()){
+                            for(char c: word.toUpperCase().toCharArray()){
                                 content[x--][y]=c;
                             }
                             break;
                         case DIAGONAL_BACK:
-                            for(char c: word.toCharArray()){
+                            for(char c: word.toUpperCase().toCharArray()){
                                 content[x--][y--]=c;
                             }
                     }
@@ -83,7 +86,7 @@ public class WordSearchService {
                 }
             }
         }
-        //randomFillGrid(content);
+        randomFillGrid(content);
         return content;
     }
     private Direction getDirectionForFit( char[][] content,String word, Coordinate coordinate){
